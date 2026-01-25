@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 style="color:#27ae60;">{{ action }} Trabajador</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.dni.label }}<br>{{ form.dni(size=32) }}</p>
+    <p>{{ form.nombre.label }}<br>{{ form.nombre(size=64) }}</p>
+    <p>{{ form.apellido.label }}<br>{{ form.apellido(size=64) }}</p>
+    <p>{{ form.email.label }}<br>{{ form.email(size=64) }}</p>
+    <p>{{ form.puesto.label }}<br>{{ form.puesto(size=64) }}</p>
+    <p>{{ form.fecha_contratacion.label }}<br>{{ form.fecha_contratacion() }}</p>
+    <p>{{ form.empresa_id.label }}<br>{{ form.empresa_id() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+<a href="{{ url_for('menu') }}">Volver al listado</a>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+<h1 style="text-align:center; color:#2c3e50;">Panel de Gestión</h1>
+<br>
+<!-- Menú secundario -->
+<p style="text-align:center; margin-bottom:30px;">
+    <a href="{{ url_for('empresa_create') }}" style="margin-right:20px; text-decoration:none; color:#fff; background:#3498db; padding:8px 12px; border-radius:5px;">Añadir Empresa</a>
+    <a href="{{ url_for('trabajador_create') }}" style="text-decoration:none; color:#fff; background:#2ecc71; padding:8px 12px; border-radius:5px;">Añadir Trabajador</a>
+</p>
+
+<hr style="margin:20px 0;">
+
+<!-- Empresas --> 
+<div style="max-width:800px; margin: 0 auto;">
+    <h2 style="color:#2980b9; text-align:center; margin-bottom:20px;">Empresas Registradas</h2>
+
+    <table style="width:100%; border-collapse:collapse; border:1px solid #ddd; margin-bottom:20px;">
+        <thead style="background:#3498db; color:#fff;">
+            <tr>
+                <th style="padding:10px; text-align:center;">ID</th>
+                <th style="padding:10px; text-align:center;">Nombre</th>
+                <th style="padding:10px; text-align:center;">CIF</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empresa in empresas %}
+            <tr style="text-align:center;">
+                <td style="padding:8px;">{{ empresa.id }}</td>
+                <td style="padding:8px;">{{ empresa.nombre }}</td>
+                <td style="padding:8px;">{{ empresa.cif }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" style="text-align:center; padding:8px;">No hay empresas registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+<!-- Botón para ver listado completo de empresas -->
+<div style="text-align:center; margin: 20px 0;">
+    <a href="{{ url_for('empresas_list') }}">
+        <button>Ver las empresas</button>
+    </a>
+</div>
+
+<hr style="margin:20px 0;">
+
+<!-- Trabajadores -->
+<div style="max-width:800px; margin: 0 auto;">
+    <h2 style="color:#27ae60; text-align:center; margin-bottom:20px;">Trabajadores Registrados</h2>
+
+    <table style="width:100%; border-collapse:collapse; border:1px solid #ddd; margin-bottom:20px;">
+        <thead style="background:#2ecc71; color:#fff;">
+            <tr>
+                <th style="padding:10px; text-align:center;">ID</th>
+                <th style="padding:10px; text-align:center;">Nombre</th>
+                <th style="padding:10px; text-align:center;">Email</th>
+                <th style="padding:10px; text-align:center;">Empresa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trabajador in trabajadores %}
+            <tr style="text-align:center;">
+                <td style="padding:8px;">{{ trabajador.id }}</td>
+                <td style="padding:8px;">{{ trabajador.nombre }}</td>
+                <td style="padding:8px;">{{ trabajador.email }}</td>
+                <td style="padding:8px;">{% if trabajador.empresa %}{{ trabajador.empresa.nombre }}{% else %}Sin empresa{% endif %}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" style="text-align:center; padding:8px;">No hay trabajadores registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr style="margin:20px 0;">
+</div>
+
+
+<!-- Botón para ver listado completo de empresas -->
+<div style="text-align:center; margin: 20px 0;">
+    <a href="{{ url_for('trabajadores_list') }}">
+        <button>Ver los trabajadores</button>
+    </a>
+</div>
+
+{% endblock %}

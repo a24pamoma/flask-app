@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Detalle Empresa</h2>
+<p><strong>ID:</strong> {{ empresa.id }}</p>
+<p><strong>CIF:</strong> {{ empresa.cif }}</p>
+<p><strong>Nombre:</strong> {{ empresa.nombre }}</p>
+<p><strong>Dirección:</strong> {{ empresa.direccion }}</p>
+<p><strong>Sector:</strong> {{ empresa.sector }}</p>
+<p><strong>Teléfono:</strong> {{ empresa.telefono }}</p>
+<p><strong>Email:</strong> {{ empresa.email }}</p>
+
+<a href="{{ url_for('empresa_edit', id=empresa.id) }}" class="button">Editar</a>
+{% if not empresa.trabajadores %}
+<form method="POST" action="{{ url_for('empresa_delete', id=empresa.id) }}" style="display:inline;">
+    <button type="submit" class="button delete">Borrar</button>
+</form>
+
+{% endif %}
+<br>
+<br>
+<br>
+<a href="{{ url_for('empresas_list') }}" class="button">Volver</a>
+{% endblock %}

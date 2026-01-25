@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Detalle Trabajador</h2>
+<p><strong>ID:</strong> {{ t.id }}</p>
+<p><strong>DNI:</strong> {{ t.dni }}</p>
+<p><strong>Nombre:</strong> {{ t.nombre }}</p>
+<p><strong>Apellido:</strong> {{ t.apellido }}</p>
+<p><strong>Email:</strong> {{ t.email }}</p>
+<p><strong>Puesto:</strong> {{ t.puesto }}</p>
+<p><strong>Fecha de contratación:</strong> {{ t.fecha_contratacion }}</p>
+<p><strong>Empresa:</strong> {{ t.empresa.nombre }}</p>
+
+<a href="{{ url_for('trabajador_edit', id=t.id) }}" class="button">Editar</a>
+<form method="POST" action="{{ url_for('trabajador_delete', id=t.id) }}" style="display:inline;">
+    <button type="submit" class="button delete">Borrar</button>
+</form>
+<br>
+<br>
+<br>
+<a href="{{ url_for('trabajadores_list') }}" class="button">Volver</a>
+{% endblock %}

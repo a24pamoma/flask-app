@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 style="color:#2980b9;">{{ action }} Empresa</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.cif.label }}<br>{{ form.cif(size=32) }}</p>
+    <p>{{ form.nombre.label }}<br>{{ form.nombre(size=64) }}</p>
+    <p>{{ form.direccion.label }}<br>{{ form.direccion(size=128) }}</p>
+    <p>{{ form.sector.label }}<br>{{ form.sector(size=64) }}</p>
+    <p>{{ form.telefono.label }}<br>{{ form.telefono(size=32) }}</p>
+    <p>{{ form.email.label }}<br>{{ form.email(size=64) }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+<a href="{{ url_for('menu') }}">Volver al listado</a>
+{% endblock %}
